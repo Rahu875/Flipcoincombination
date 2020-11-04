@@ -1,4 +1,74 @@
 #!/bin/bash
+FLIP=$(($RANDOM%2))
+if [ $FLIP -eq 1 ]
+then
+echo "Head"
+else
+echo "Tail"
+fi
+h=0
+t=0
+declare -A singlet 
+for (( i=1; i<=21; i++))
+do
+	flip=$((RANDOM%2))
+	if [[ $flip -eq 1 ]]
+	then
+		echo "Head"
+		((h++))
+		singlet[heads]=$h
+	else
+
+		echo "Tails"
+		((t++))
+		singlet[tails]=$t
+	fi
+done
+
+	if [[ $h -gt $t ]]
+ 	then
+		headperc=`expr $h \* 100`
+		echo " heads win with $headperc %" 
+	else
+		tailperc=`expr $t \* 100`
+		echo " tails win with $tailperc %"
+	fi
+done
+
+echo "Doublet flip"
+declare -A doublet 
+for (( i=1, i<=50; i++ ))
+do
+ft=$ ((RANDOM%4))
+case $ft in
+	1)
+	 ((hh++))
+	doublet [HH]=$hh 
+	;;
+	2)
+	((ht++))
+	doublet[HT]=$ht ;;
+	3)
+	((th++))
+	doublet[TH]=$th
+	;;
+	4)
+	((tt++))
+	doublet[TT]=$tt
+	;;
+esac
+
+max()
+for i in ${!doublet[@]}
+do
+	if [[ $[doublet[$i] -gt $max ]]
+	then
+		max=${doublet[$i]}
+	fi
+	done
+z= `expr $max \ * 100 \40`
+echo ${!doublet[@]}
+echo " ${doublet[$max]} won by $z %"
 
 echo "Triplet flip"
 declare -A triplet 
