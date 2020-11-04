@@ -6,3 +6,32 @@ echo "Head"
 else
 echo "Tail"
 fi
+h=0
+t=0
+declare -A singlet 
+for (( i=1; i<=21; i++))
+do
+	flip=$((RANDOM%2))
+	if [[ $flip -eq 1 ]]
+	then
+		echo "Head"
+		((h++))
+		singlet[heads]=$h
+	else
+
+		echo "Tails"
+		((t++))
+		singlet[tails]=$t
+	fi
+done
+
+	if [[ $h -gt $t ]]
+ 	then
+		headperc=`expr $h \* 100`
+		echo " heads win with $headperc %" 
+	else
+		tailperc=`expr $t \* 100`
+		echo " tails win with $tailperc %"
+	fi
+done
+
